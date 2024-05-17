@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:scooterlab_user_app/safetyvideo.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});

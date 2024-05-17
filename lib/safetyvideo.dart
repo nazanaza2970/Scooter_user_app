@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class SafetyVideo extends StatelessWidget {
+class SafetyVideo extends StatefulWidget {
   const SafetyVideo({super.key});
+  static String myVideoId = 'nkLPO5O8bbU';
+
+  @override
+  State<SafetyVideo> createState() => _SafetyVideoState();
+}
+
+class _SafetyVideoState extends State<SafetyVideo> {
+  late YoutubePlayerController _controller;
+
+  // final YoutubePlayerController _controller = YoutubePlayerController(
+  @override
+  void initState() {
+    _controller = YoutubePlayerController(
+      initialVideoId:SafetyVideo.myVideoId,
+      flags: const YoutubePlayerFlags(
+          mute: false,
+          autoPlay: true,
+          disableDragSeek: true,
+          loop: false,
+          enableCaption: false),
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +48,9 @@ class SafetyVideo extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
-              child: const Text("Safety Video Placeholder"),
+              child: YoutubePlayer(
+                controller: _controller,
+              ),
             ),
             Container(
               alignment: Alignment.center,
