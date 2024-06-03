@@ -18,7 +18,7 @@ class _MissionsState extends State<Missions> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        for (var item in mTuples) MissionCard(mTitle: item.item1, mDesc: item.item2)
+        for (var item in mTuples) MissionCard(mTitle: item.item1, mDesc: item.item2, mID:"rID", mTnC: "Terms and Conditions",)
           ],
     );
   }

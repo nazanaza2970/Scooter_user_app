@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 class MissionCard extends StatefulWidget {
   final String mTitle;
   final String mDesc;
-  const MissionCard({super.key, required this.mTitle, required this.mDesc});
+  final String mID;
+  final String mTnC;
+  const MissionCard({super.key, required this.mTitle, required this.mDesc,required this.mID,required this.mTnC});
 
   @override
   State<MissionCard> createState() => _MissionCardState();
@@ -14,6 +16,8 @@ class _MissionCardState extends State<MissionCard> {
 
   late String mTitle = widget.mTitle;
   late String mDesc = widget.mDesc;
+  late String mID = widget.mID;
+  late String mTnC = widget.mTnC;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,22 @@ class _MissionCardState extends State<MissionCard> {
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
 
-                    onPressed: (){},
+                    onPressed: (){
+                      showDialog(context: context,
+                          builder: (BuildContext context){
+                        return AlertDialog(
+                            title: const Text("Consent Form"),
+                            content: Text(mTnC),
+                            actions: <Widget>[
+                              ElevatedButton(
+                                  onPressed: (){
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text("Accept"))
+                            ],
+                        );
+                      });
+                    },
                     child: const Text(
                         "Start",
                       style: TextStyle(
